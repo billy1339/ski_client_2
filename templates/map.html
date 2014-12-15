@@ -1,27 +1,8 @@
-<!-- <div class='container' ng-controller="MapCtrl">
-   <h1> {{ mountain }} </h1>
-  <style type="text/css">
-      #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-  <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWTTAH8EzkzjHCsSepb2AIc2M786HsgXY">
-  </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: 43.6121339, lng: -72.8010977},
-          zoom: 14
-        };
-        // var map = new google.maps.Map(document.getElementById('map-canvas'),
-        //     mapOptions);
-      }
-      // google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-
-  <div id="map-canvas"></div>
-
-</div> -->
 <div ng-controller="MapCtrl">
   <h1>{{mountain}}</h1>
-  <div map-canvas id="map-canvas" style="width: 500px; height: 500px;"></div>
+   <div map-canvas lat="{{lat}}" lng="{{lng}}" id="map-canvas" style="width: 500px; height: 500px;"></div>
+  <div ng-controller="MarkerCtrl">
+    <a ng-click="makeMarker()"> New Marker </a>
+    <button ng-click="makeMarker()"type="button" class="btn btn-primary">Create</button>
+  </div>
 </div>

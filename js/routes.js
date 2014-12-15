@@ -5,7 +5,8 @@ angular.module('Ski').config(function($routeProvider) {
       templateUrl: 'templates/home.html'
     })
     .when('/map', {
-      templateUrl: 'templates/map.html'
+      templateUrl: 'templates/map.html',
+      controller: 'MapCtrl'
     })
     .otherwise({
       redirectTo: '/'
