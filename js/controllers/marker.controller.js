@@ -3,12 +3,6 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
   'use strict';
 
   $scope.makeMarker = function() {
-    // console.log('$scope.lng');
-    // console.log('$scope.lat');
-    // console.log($scope.lng);
-    // console.log($scope.lat);
-    // console.log($scope.map);
-    // console.log('$scope.map');
     var myLatlng = new google.maps.LatLng($scope.lat, $scope.lng);
     43.6121339, -72.8010977
     var marker = new google.maps.Marker({
@@ -19,6 +13,10 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
           title:"Hello World!"
         });
 
+
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+      alert( 'Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng() );
+    });
 
     //     google.maps.event.addListener(marker, 'mouseover', toggleBounce);
 
@@ -31,6 +29,10 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
     //     }
     //   }
   };
+
+
+
+
 
 });
 
