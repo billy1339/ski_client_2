@@ -1,5 +1,5 @@
 <div ng-controller="MapCtrl">
-  <h1>{{mountain}}</h1>
+  <h1>{{mountain.name}}</h1>
    <div map-canvas lat="{{lat}}" lng="{{lng}}" id="map-canvas" style="width: 500px; height: 500px;"></div>
   <div ng-controller="MarkerCtrl">
     <a ng-click="makeMarker()"> New Marker </a>

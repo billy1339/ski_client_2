@@ -4,7 +4,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
 
   $scope.makeMarker = function() {
     var myLatlng = new google.maps.LatLng($scope.lat, $scope.lng);
-    43.6121339, -72.8010977
+    // 43.6121339, -72.8010977
     var marker = new google.maps.Marker({
           position: myLatlng,
           draggable:true,
