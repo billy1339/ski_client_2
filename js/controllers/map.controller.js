@@ -11,7 +11,6 @@ angular.module('Ski').controller('MapCtrl', function($scope, $http, MountainFact
   //         $scope.lat = response.latitude;
   //         $scope.lng = response.longitude;
   //       });
-  debugger
   console.log($scope.mountain);
 
 });
