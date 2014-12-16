@@ -26,7 +26,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
 
   var listnerForNewMarkerLatLong = function(marker) {
      google.maps.event.addListener(marker, 'dragend', function(event) {
-        alert( 'Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng() );
+        console.log('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
       });
   };
 

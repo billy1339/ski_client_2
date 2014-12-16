@@ -1,8 +1,8 @@
-angular.module('Ski').factory('MountainFactory', function($http) {
+angular.module('Ski').factory('MountainFactory', function($http, $q) {
   var mountain = {};
   var fetch = function() {
     $http.get('https://quiet-journey-8066.herokuapp.com/mountains/3')
-         .success(function(response) {
+        .success(function(response) {
             // console.log(response);
             // $scope.mountain = response.name;
             // $scope.lat = response.latitude;
@@ -12,7 +12,9 @@ angular.module('Ski').factory('MountainFactory', function($http) {
             // console.log(response);
             // console.log(mountain);
           });
+
   };
+
 
 
   return {
