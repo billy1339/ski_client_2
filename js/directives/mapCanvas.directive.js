@@ -19,7 +19,8 @@ angular.module('Ski').directive('mapCanvas', function() {
 
 
       // scope.$parent.mountain.longitude this will give the longitude, but the asynchronous http call takes longer than to process all the other code.
-      var myLatlng = new google.maps.LatLng(43.6121339, -72.8010977); //scope.$parent.mountain.latitude, scope.$parent.mountain.longitude);
+      var myLatlng = new google.maps.LatLng(scope.$parent.mountain.longitude, scope.$parent.mountain.latitude); //scope.$parent.mountain.latitude, scope.$parent.mountain.longitude);
+      debugger
       var mapOptions = {
         center: myLatlng,
         zoom: 14
@@ -44,7 +45,6 @@ angular.module('Ski').directive('mapCanvas', function() {
           });
         };
      };
-     debugger
      allMarker(markerArray);
       // google.maps.event.addListener(marker, 'mouseover', toggleBounce);
 
