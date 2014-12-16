@@ -1,5 +1,5 @@
 
-angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
+angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
   'use strict';
 
   $scope.makeMarker = function() {
@@ -40,21 +40,36 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http) {
       });
   };
 
+   var clearForm = function() {
+        $scope.input = {};
+        $scope.description = {};
+    };
+
+  var submitDescription = function(description, response_id) {
+    var params = {
+      description: {body: description.body, input_id: response_id}
+    }
+
+    $http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function(response) {
+      console.log(response)
+    });
+
+  };
+
+
   $scope.submitMarker = function(input, description) {
     $scope.marker.draggable = false;
-    var inputParams = {
-      input: {category: input.category, longitude: $scope.marker.getPosition().k, latitude: $scope.marker.getPosition().D }
+    var params = {
+      input: {category: input.category, longitude:$scope.marker.position.D, latitude: $scope.marker.position.k, mountain_id: $scope.mountain.id,  }
     }
     debugger
-
-
-    // $http.put()
-
-    console.log(input)
-    console.log(description)
-    // $scope.marker.trigger('click')
-    console.log($scope.marker.getPosition())
-    // listnerForNewMarkerLatLong($scope.marker);
+    $http.post('https://quiet-journey-8066.herokuapp.com/inputs', JSON.stringify(params)).success(function(response){
+      debugger
+      console.log(response)
+      $q.all(submitDescription(description, response.id)).then(function() {
+        clearForm();
+      });
+    });
 
   };
 

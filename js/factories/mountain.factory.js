@@ -6,7 +6,7 @@ angular.module('Ski').factory('MountainFactory', function($http, $q) {
     $http.get('https://quiet-journey-8066.herokuapp.com/mountains/3')
         .success(function(response) {
             angular.copy(response, mountain);
-
+            console.log(response);
           });
   };
 
