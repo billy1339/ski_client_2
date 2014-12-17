@@ -1,12 +1,11 @@
 <div ng-controller="MapCtrl">
-  <h1>{{mountain.name}}</h1>
+  <h1>{{mountainName}}</h1>
    <div map-canvas lat="{{lat}}" lng="{{lng}}" id="map-canvas" style="width: 500px; height: 500px;"></div>
   <div ng-controller="MarkerCtrl">
     <button ng-click="makeMarker()"type="button" class="btn btn-primary">Create</button>
     <button ng-click="submitMarker(input, description)"type="submit" class="btn btn-success">Submit</button>
     <form role="form">
       <div class="form-group">
-
         <label for="categoryInput">Category</label>
 
         <select class="form-control" value="Powder" id="categoryInput" ng-model="input.category">

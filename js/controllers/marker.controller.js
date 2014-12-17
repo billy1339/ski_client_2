@@ -4,11 +4,10 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
   $scope.makeMarker = function() {
     var myLatlng = setInitialLatLong();
     var marker = makeMarkerData(myLatlng);
-    listnerForNewMarkerLatLong($scope.marker);
   };
 
   var setInitialLatLong = function() {
-    var myLatlng = new google.maps.LatLng($scope.mountain.longitude, $scope.mountain.latitude);
+    var myLatlng = new google.maps.LatLng($scope.$$prevSibling.mountain.longitude, $scope.$$prevSibling.mountain.latitude);
     return myLatlng;
   };
 
@@ -17,27 +16,10 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
       position: myLatlng,
       draggable:true,
       animation: google.maps.Animation.DROP,
-      map: $scope.$$prevSibling.map,
-      title: 'Hello World!'
+      map: $scope.$$prevSibling.map
     });
-    // return marker
   };
 
-  var makeInfoWindow = function() {
-    var infowindow = new google.maps.InfoWindow(
-      { content: 'cha baby',
-        size: new google.maps.Size(50,50)
-      });
-    return infowindow;
-}
-
-  var listnerForNewMarkerLatLong = function(marker) {
-     google.maps.event.addListener(marker, 'click', function(event) {
-        var infoWindow = makeInfoWindow();
-        infoWindow.open($scope.map, marker);
-        console.log('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
-      });
-  };
 
    var clearForm = function() {
         $scope.input = {};
@@ -50,7 +32,6 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
     };
 
     $http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function(response) {
-      console.log(response);
     });
 
   };
@@ -59,10 +40,9 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
   $scope.submitMarker = function(input, description) {
     $scope.marker.draggable = false;
     var params = {
-      input: {category: input.category, longitude:$scope.marker.position.D, latitude: $scope.marker.position.k, mountain_id: $scope.mountain.id,  }
-    }
+      input: {category: input.category, longitude:$scope.marker.position.D, latitude: $scope.marker.position.k, mountain_id: $scope.$$prevSibling.mountain.id,  }
+    };
     $http.post('https://quiet-journey-8066.herokuapp.com/inputs', JSON.stringify(params)).success(function(response){
-      console.log(response);
       $q.all(submitDescription(description, response.id)).then(function() {
         clearForm();
       });

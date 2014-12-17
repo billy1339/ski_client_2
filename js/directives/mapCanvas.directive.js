@@ -1,14 +1,13 @@
 angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
   'use strict'
-  function link (scope, element, attrs) {
-    debugger
-    var markerArray, allMarker, mapOptions, myLatlng;
-    var promise = MountainFactory.fetch();
+  function link (scope, element) {
 
-    promise.then(function(myMountain){
-    scope.mountain = myMountain;
+    var markerArray, allMarker, mapOptions, myLatlng, promise, addInfoWindowListner, makeWindowForMarkers;
+    promise = MountainFactory.fetch();
+
+    promise.then(function(mountain){
+    scope.mountain = mountain;
     myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
-    // myLatlng = new google.maps.LatLng(myMountain.longitude, myMountain.latitude);
 
     mapOptions = {
       center: myLatlng,
@@ -17,17 +16,26 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
     scope.map = new google.maps.Map(element[0], mapOptions);
 
-    // if (Object.keys(scope.$parent.mountain).length === 0){
-    //   return;
-    // };
+    makeWindowForMarkers = function(category) {
+     var infowindow = new google.maps.InfoWindow({
+        content: category,
+        size: new google.maps.Size(50,100)
+      });
+      return infowindow;
+    };
 
 
-    // markerArray =
+    addInfoWindowListner = function(marker, category) {
+      google.maps.event.addListener(marker, 'click', function(event) {
+        var infoWindow = makeWindowForMarkers(category);
+        infoWindow.open(scope.map, marker);
+      });
+    };
 
     allMarker = function() {
-      var myLatlng, marker, i;
-      var array = scope.mountain.inputs;
-      var length = array.length;
+      var myLatlng, marker, i, array, length;
+      array = scope.mountain.inputs;
+      length = array.length;
       for(i = 0; i < length; i++) {
         myLatlng = new google.maps.LatLng(array[i].latitude, array[i].longitude);
         marker = new google.maps.Marker({
@@ -37,12 +45,12 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
           map: scope.map,
           title: array[i].type
         });
-      };
+        addInfoWindowListner(marker, array[i].category);
+      }
     };
     allMarker();
 
     });
-    // return
   }
   return {
     scope: {

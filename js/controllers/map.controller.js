@@ -1,10 +1,8 @@
 angular.module('Ski').controller('MapCtrl', function($scope, $http, MountainFactory) {
   'use strict';
-
-  // $scope.$watch($scope.mountain, function() {
+  // $scope.$watch($scope.$$prevSibling, function() {
   //   debugger
-  //   '<div map-canvas id="map-canvas" style="width: 500px; height: 500px;"></div>'
+  //   $scope.mountainName = $scope.$$prevSibling.mountain.name;
   // });
-
 });
 

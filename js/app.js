@@ -1,6 +1,5 @@
 angular.module('Ski', ['ngRoute']).run(function(MountainFactory){
   'use strict'
-  debugger
   //MountainFactory.fetch();
 
 
