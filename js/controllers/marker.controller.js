@@ -1,6 +1,17 @@
 angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
   'use strict';
 
+  $scope.allCategories = {
+    lift: {title: 'Lift', url: 'images/cablecar.png'},
+    parking: {parking: 'Parking', url: ''},
+    trail: {trail: 'Trail Conditions', url: ''},
+    snow: {title: 'Snow Conditions', url: 'images/snowy-2.png'},
+    lines: {title: 'Long Lines', url: ''},
+    lodge: {title: 'Lodge Status', url: ''},
+    park: {title: 'Park', url: ''}
+
+  };
+
   $scope.makeMarker = function() {
     var myLatlng = setInitialLatLong();
     var marker = makeMarkerData(myLatlng);
@@ -16,7 +27,8 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
       position: myLatlng,
       draggable:true,
       animation: google.maps.Animation.DROP,
-      map: $scope.$$prevSibling.map
+      map: $scope.$$prevSibling.map,
+      icon: 'images/cablecar.png'
     });
   };
 

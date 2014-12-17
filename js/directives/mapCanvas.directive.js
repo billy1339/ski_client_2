@@ -32,6 +32,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
       });
     };
 
+    //icon: category.images
     allMarker = function() {
       var myLatlng, marker, i, array, length;
       array = scope.mountain.inputs;
