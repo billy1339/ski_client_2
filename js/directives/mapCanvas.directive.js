@@ -17,9 +17,10 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     scope.map = new google.maps.Map(element[0], mapOptions);
 
     makeWindowForMarkers = function(category) {
+     debugger
      var infowindow = new google.maps.InfoWindow({
         content: category,
-        size: new google.maps.Size(50,100)
+        size: new google.maps.Size(100,100)
       });
       return infowindow;
     };
@@ -44,7 +45,8 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
           draggable:false,
           animation: google.maps.Animation.DROP,
           map: scope.map,
-          title: array[i].type
+          title: array[i].category,
+          icon: array[i].url
         });
         addInfoWindowListner(marker, array[i].category);
       }
