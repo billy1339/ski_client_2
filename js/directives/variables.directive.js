@@ -1,9 +1,6 @@
 angular.module('Ski').directive('mapCanvas', function() {
-  debugger
+  'use strict'
   function link (scope, element, attrs) {
-
-
-
     attrs.$observe('lat', function(value) {
       element.find('latitude').text(value);
       // console.log(value);
