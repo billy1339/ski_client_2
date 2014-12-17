@@ -1,6 +1,5 @@
 angular.module('Ski').controller('MapCtrl', function($scope, $http, MountainFactory) {
   'use strict';
-  //$scope.mountain = MountainFactory.mountain;
 
   // $scope.$watch($scope.mountain, function() {
   //   debugger

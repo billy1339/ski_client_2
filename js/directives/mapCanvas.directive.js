@@ -1,13 +1,14 @@
 angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
   'use strict'
   function link (scope, element, attrs) {
+    debugger
     var markerArray, allMarker, mapOptions, myLatlng;
     var promise = MountainFactory.fetch();
 
     promise.then(function(myMountain){
-
-    //myLatlng = new google.maps.LatLng(scope.$parent.mountain.longitude, scope.$parent.mountain.latitude);
-    myLatlng = new google.maps.LatLng(myMountain.longitude, myMountain.latitude);
+    scope.mountain = myMountain;
+    myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
+    // myLatlng = new google.maps.LatLng(myMountain.longitude, myMountain.latitude);
 
     mapOptions = {
       center: myLatlng,
@@ -23,28 +24,30 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
     // markerArray =
 
-    // allMarker = function() {
-    //   var myLatlng, marker, i;
-    //   var array = scope.$parent.mountain.inputs;
-    //   var length = array.length;
-    //   for(i = 0; i < length; i++) {
-    //     myLatlng = new google.maps.LatLng(array[i].latitude, array[i].longitude);
-    //     marker = new google.maps.Marker({
-    //       position: myLatlng,
-    //       draggable:false,
-    //       animation: google.maps.Animation.DROP,
-    //       map: scope.map,
-    //       title: array[i].type
-    //     });
-    //   };
-    // };
+    allMarker = function() {
+      var myLatlng, marker, i;
+      var array = scope.mountain.inputs;
+      var length = array.length;
+      for(i = 0; i < length; i++) {
+        myLatlng = new google.maps.LatLng(array[i].latitude, array[i].longitude);
+        marker = new google.maps.Marker({
+          position: myLatlng,
+          draggable:false,
+          animation: google.maps.Animation.DROP,
+          map: scope.map,
+          title: array[i].type
+        });
+      };
+    };
+    allMarker();
 
     });
     // return
   }
   return {
     scope: {
-      map: '@map'
+      map: '@map',
+      mountain: '@mountain'
     },
     link: link,
   };
