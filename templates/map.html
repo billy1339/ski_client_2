@@ -20,11 +20,17 @@
       <div class="container" ng-repeat="input in $$prevSibling.mountain.inputs">
       <a class='hidable' id='modalId{{input.id}}' data-toggle="modal" data-target="#description{{input.id}}Modal">
           click</a>
-          <ga-modal title="{{input.category}}" inputid="{{input.id}}">
+          <ws-description title="{{input.category}}" inputid="{{input.id}}">
             <ul>
               <li ng-repeat="body in input.descriptions">{{body.body}}</li>
             </ul>
-          </ga-modal>
+
+          <form role='form' name='descrptionForm' ng-submit='newDescription(description, input.id)' novalidate>
+          <label for='newDescription'>Create a new description</label>
+          <input type='description' class='form-control' id='newDescription' placeholder='Enter a description' ng-model='description.new' required>
+          <button type="submit" class='btn btn-primary' ng-disabled="descrptionForm.$invalid">Submit Description</button>
+          </form>
+          </ws-description>
       </div>
   </div>
 </div>
