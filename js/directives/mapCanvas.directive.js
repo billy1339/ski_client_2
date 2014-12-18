@@ -2,7 +2,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
   'use strict'
   function link (scope, element) {
 
-    var markerArray, allMarker, mapOptions, myLatlng, promise, addInfoWindowListner, makeWindowForMarkers;
+    var markerArray, allMarker, mapOptions, myLatlng, promise, addModalListner;
     promise = MountainFactory.fetch();
 
     promise.then(function(mountain){
@@ -16,21 +16,19 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
     scope.map = new google.maps.Map(element[0], mapOptions);
 
-    makeWindowForMarkers = function(category) {
-     var infowindow = new google.maps.InfoWindow({
-        content: category,
-        size: new google.maps.Size(100,100)
-      });
-      return infowindow;
-    };
+    // makeWindowForMarkers = function(category) {
+    //  var infowindow = new google.maps.InfoWindow({
+    //     content: category,
+    //     size: new google.maps.Size(100,100)
+    //   });
+    //   return infowindow;
+    // };
 
 
-    addInfoWindowListner = function(marker, category) {
+    addModalListner = function(marker, category) {
       scope.input = category;
       google.maps.event.addListener(marker, 'click', function(event) {
-        var infoWindow = makeWindowForMarkers(category.category);
-        infoWindow.open(scope.map, marker);
-        console.log(category);
+        $('#modalId'+category.id).click()
       });
     };
 
@@ -49,7 +47,9 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
           title: array[i].category,
           icon: array[i].url
         });
-        addInfoWindowListner(marker, array[i]);
+        // marker.set('data-toggle', "modal");
+        // marker.set('data-target','#description'+array[i].id+'Modal');
+        addModalListner(marker, array[i]);
       }
     };
     allMarker();

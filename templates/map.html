@@ -18,7 +18,7 @@
 
 
       <div class="container" ng-repeat="input in $$prevSibling.mountain.inputs">
-      <a data-toggle="modal" data-target="#description{{input.id}}Modal">
+      <a class='hidable' id='modalId{{input.id}}' data-toggle="modal" data-target="#description{{input.id}}Modal">
           click</a>
           <ga-modal title="{{input.category}}" inputid="{{input.id}}">
             <ul>
