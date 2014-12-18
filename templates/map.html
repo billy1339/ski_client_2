@@ -15,20 +15,15 @@
         <input type="description" class="form-control" id="descriptionInput" placeholder="Enter a description" ng-model="description.body">
       </div>
     </form>
-    <!-- tr>
-      <td>
 
-        <a data-toggle="modal" data-target="#demo{{user.id}}Modal">
+    <a data-toggle="modal" data-target="#descriptionModal">
           click</a>
-
-          <ga-modal title="{{user.first_name}}'s skills:" datauserid="{{user.id}}">
+      <div class="container" ng-repeat="input in $$prevSibling.mountain.inputs">
+          <ga-modal title="{{input.category}}" datauserid="{{input.id}}">
             <ul>
-              <li ng-repeat="skill in user.skills">{{skill.name}}</li>
+              <li ng-repeat="body in input.descriptions">{{body.body}}</li>
             </ul>
           </ga-modal>
-
-        </td>
-        <td>{{user.title.name}}</td>
-      </tr> -->
+      </div>
   </div>
 </div>

@@ -22,7 +22,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
     'Lodge',
     'Snow Park',
   ];
-
+  debugger
   $scope.makeMarker = function() {
     var myLatlng = setInitialLatLong();
     var marker = makeMarkerData(myLatlng);
@@ -82,4 +82,21 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
   };
 
 });
+
+angular.module('Ski').directive('gaModal', function() {
+    return {
+        restrict: 'E',
+
+        transclude: true,
+
+        templateUrl: 'templates/description-modal.html',
+
+        scope: {
+            title: '@',
+            datauserid: '@'
+        }
+    };
+});
+
+
 
