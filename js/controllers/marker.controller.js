@@ -1,4 +1,4 @@
-angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
+angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, MountainFactory) {
   'use strict';
 
   $scope.imageCategories = {
@@ -91,11 +91,37 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
     }));
   };
 
-  $scope.createFlag = function(id, flagNum) {
-    $('#flagOne'+id).addClass('turnRed');
-    console.log(id);
+  var promise = MountainFactory.fetch();
+  promise.then(function(mountain){
     debugger
-    // console.log(flagNum);
+    var colorExistingFlags= function(mountain) {
+      for(var i=0; i < mountain.inputs.length;i++) {
+        debugger
+        if (mountain.inputs[i].flags.length !== 0) {
+          $('#flagOne'+mountain.inputs[i].id).addClass('turnRed');
+          debugger
+        }
+      }
+    };
+    colorExistingFlags(mountain);
+  });
+
+  $scope.createFlag = function(input, flagNum) {
+    if (flagNum === 1) {
+       $('#flagOne'+input.id).addClass('turnRed');
+    } else {
+       $('#flagTwo'+input.id).addClass('turnRed');
+    }
+    if (input.flags.length === 0) {
+      $http.post('https://quiet-journey-8066.herokuapp.com/flags', {flag: {input_id: input.id}}).success(function(response) {
+        console.log(response)
+      });
+    } else {
+      $http.delete('https://quiet-journey-8066.herokuapp.com/inputs/'+input.id).success(function(response) {
+        console.log(response);
+      });
+    }
+
   };
 
 });

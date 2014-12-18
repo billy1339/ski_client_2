@@ -2,10 +2,11 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
   'use strict'
   function link (scope, element) {
 
-    var markerArray, allMarker, mapOptions, myLatlng, promise, addModalListner;
+    var markerArray, allMarker, mapOptions, myLatlng, promise, addModalListner, doesHaveFlags;
     promise = MountainFactory.fetch();
 
     promise.then(function(mountain){
+
     scope.mountain = mountain;
     myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
 
@@ -23,7 +24,6 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     //   });
     //   return infowindow;
     // };
-
 
     addModalListner = function(marker, category) {
       scope.input = category;
