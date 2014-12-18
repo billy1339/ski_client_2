@@ -16,10 +16,11 @@
       </div>
     </form>
 
-    <a data-toggle="modal" data-target="#descriptionModal">
-          click</a>
+
       <div class="container" ng-repeat="input in $$prevSibling.mountain.inputs">
-          <ga-modal title="{{input.category}}" datauserid="{{input.id}}">
+      <a data-toggle="modal" data-target="#description{{input.id}}Modal">
+          click</a>
+          <ga-modal title="{{input.category}}" inputid="{{input.id}}">
             <ul>
               <li ng-repeat="body in input.descriptions">{{body.body}}</li>
             </ul>
