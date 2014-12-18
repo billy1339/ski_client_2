@@ -82,9 +82,11 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
 
   $scope.newDescription = function(description, id) {
     var params = {
-      description: {body: description.new, input_id: id}
+      description: {body: description, input_id: id.id}
     };
-    $q.all($http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function() {
+    debugger
+    $('#list'+id.id).append('<li>'+description+'</li>');
+    $q.all($http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function(response) {
     }).then(function() {
       $scope.body = {};
       // clearForm();
@@ -93,13 +95,10 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
 
   var promise = MountainFactory.fetch();
   promise.then(function(mountain){
-    debugger
     var colorExistingFlags= function(mountain) {
       for(var i=0; i < mountain.inputs.length;i++) {
-        debugger
         if (mountain.inputs[i].flags.length !== 0) {
           $('#flagOne'+mountain.inputs[i].id).addClass('turnRed');
-          debugger
         }
       }
     };
