@@ -96,6 +96,14 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
     }));
   };
 
+  var update = function() {
+    var promise = MountainFactory.fetch();
+    promise.then(function(mountain){
+      $scope.mountain = mountain;
+    });
+  }
+
+
   var promise = MountainFactory.fetch();
   promise.then(function(mountain){
     var colorExistingFlags= function(mountain) {
@@ -111,6 +119,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
   $scope.createFlag = function(input, flagNum) {
     if (flagNum === 1) {
        $('#flagOne'+input.id).addClass('turnRed');
+       update()
     } else {
        $('#flagTwo'+input.id).addClass('turnRed');
     }
