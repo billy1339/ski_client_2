@@ -2,7 +2,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
   'use strict'
   function link (scope, element) {
 
-    var markerArray, allMarker, mapOptions, myLatlng, promise, addModalListner, doesHaveFlags;
+    var markerArray, mapOptions, allMarker, myLatlng, promise, addModalListner, doesHaveFlags;
     promise = MountainFactory.fetch();
 
     promise.then(function(mountain){
@@ -29,6 +29,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
       scope.input = category;
       google.maps.event.addListener(marker, 'click', function(event) {
         $('#modalId'+category.id).click()
+        scope.deleteMarker = marker;
       });
     };
 
@@ -47,6 +48,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
           title: array[i].category,
           icon: array[i].url
         });
+        marker.set('id', 'markerId'+array[i].id)
         // marker.set('data-toggle', "modal");
         // marker.set('data-target','#description'+array[i].id+'Modal');
         addModalListner(marker, array[i]);

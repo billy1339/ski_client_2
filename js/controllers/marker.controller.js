@@ -1,4 +1,4 @@
-angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, MountainFactory) {
+angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, MountainFactory, $window) {
   'use strict';
 
   $scope.imageCategories = {
@@ -80,15 +80,18 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
     });
   };
 
+  var clearBody = function() {
+    // need to clear the description form.
+  };
+
   $scope.newDescription = function(description, id) {
     var params = {
       description: {body: description, input_id: id.id}
     };
-    debugger
     $('#list'+id.id).append('<li>'+description+'</li>');
     $q.all($http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function(response) {
     }).then(function() {
-      $scope.body = {};
+      clearBody();
       // clearForm();
     }));
   };
@@ -113,14 +116,13 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
     }
     if (input.flags.length === 0) {
       $http.post('https://quiet-journey-8066.herokuapp.com/flags', {flag: {input_id: input.id}}).success(function(response) {
-        console.log(response)
       });
     } else {
       $http.delete('https://quiet-journey-8066.herokuapp.com/inputs/'+input.id).success(function(response) {
-        console.log(response);
+        $scope.$$prevSibling.deleteMarker.setMap(null);
+        console.log(response)
       });
-    }
-
+    };
   };
 
 });
