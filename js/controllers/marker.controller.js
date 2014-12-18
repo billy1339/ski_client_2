@@ -86,8 +86,16 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
     };
     $q.all($http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function() {
     }).then(function() {
-      $scope.description = {};
+      $scope.body = {};
+      // clearForm();
     }));
+  };
+
+  $scope.createFlag = function(id, flagNum) {
+    $('#flagOne'+id).addClass('turnRed');
+    console.log(id);
+    debugger
+    // console.log(flagNum);
   };
 
 });

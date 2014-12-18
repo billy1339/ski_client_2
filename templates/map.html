@@ -25,11 +25,15 @@
               <li ng-repeat="body in input.descriptions">{{body.body}}</li>
             </ul>
 
-          <form role='form' name='descrptionForm' ng-submit='newDescription(description, input.id)' novalidate>
+          <form role='form' name='descrptionForm' ng-submit='newDescription(body, input.id)' novalidate>
           <label for='newDescription'>Create a new description</label>
-          <input type='description' class='form-control' id='newDescription' placeholder='Enter a description' ng-model='description.new' required>
+          <input type='description' class='form-control' id='newDescription' placeholder='Enter a description' ng-model='body' required>
           <button type="submit" class='btn btn-primary' ng-disabled="descrptionForm.$invalid">Submit Description</button>
           </form>
+          <div class='container' id='flags'>
+
+          <h4 ng-click='createFlag(input.id, 1)' class='flag' id='flagOne{{input.id}}'>&#9873;</h4><h4 ng-click='createFlag(input.id, 2)' class='flag' id='flagTwo{{input.id}}'>&#9873;</h4>
+          </div>
           </ws-description>
       </div>
   </div>

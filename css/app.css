@@ -1,3 +1,20 @@
 .hidable {
   display: none;
 }
+
+.flag {
+  display: inline;
+  margin: 1em;
+}
+
+.flag:hover {
+  color: red;
+}
+
+#flags {
+
+}
+
+.turnRed {
+  color: red;
+}
