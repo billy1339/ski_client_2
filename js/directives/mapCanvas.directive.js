@@ -27,8 +27,9 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
 
     addInfoWindowListner = function(marker, category) {
+      scope.input = category;
       google.maps.event.addListener(marker, 'click', function(event) {
-        var infoWindow = makeWindowForMarkers(category);
+        var infoWindow = makeWindowForMarkers(category.category);
         infoWindow.open(scope.map, marker);
       });
     };
@@ -48,7 +49,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
           title: array[i].category,
           icon: array[i].url
         });
-        addInfoWindowListner(marker, array[i].category);
+        addInfoWindowListner(marker, array[i]);
       }
     };
     allMarker();
@@ -58,7 +59,8 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
   return {
     scope: {
       map: '@map',
-      mountain: '@mountain'
+      mountain: '@mountain',
+      category: '@category'
     },
     link: link,
   };

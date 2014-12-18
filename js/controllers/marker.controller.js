@@ -11,7 +11,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q) {
     'lodge': {title: 'Lodge', url: 'http://i.imgur.com/Xz8JpuJ.png'},
     'park': {title: 'Snow Park', url: 'http://i.imgur.com/A9AQssm.png'}
   };
-  // to match, possible downcase and to symbol?
+
   $scope.arrayOfCategories = [
     'Lift',
     'Parking',
