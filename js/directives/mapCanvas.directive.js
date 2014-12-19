@@ -7,7 +7,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
     promise.then(function(mountain){
 
-    scope.mountain = mountain;
+    scope.mountain = mountain[0];
     myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
 
     mapOptions = {
@@ -37,7 +37,6 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     //icon: category.images
     allMarker = function() {
       var myLatlng, marker, i, array, length;
-      debugger
       array = scope.mountain.inputs;
       length = array.length;
       for(i = 0; i < length; i++) {
