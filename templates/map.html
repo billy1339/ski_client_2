@@ -1,26 +1,22 @@
 <div ng-controller="MapCtrl">
   <h1 id='mountainTitle'>Killington Mountain</h1><br>
-    <div class="container">
+    <div class="container" id='mountainMap'>
         <div class='row'>
-          <div class='col-xs-12'>
-              <div map-canvas id="map-canvas" style="width: 1000px; height: 1000px"></div>
+          <div class='col-md-8'>
+              <div map-canvas id="map-canvas" style="width: 100%; height: 600px"></div>
           </div>
-        </div>
-    </div>
     <div ng-controller="MarkerCtrl">
-      <div class='container'>
-        <div class='row'>
-          <div class='col-xs-12'>
+          <div class='col-md-4'>
             <button ng-click="makeMarker()"type="button" class="btn btn-primary">Create</button>
             <button ng-click="submitMarker(input, description)"type="submit" class="btn btn-success">Submit</button>
             <form role="form">
               <div class="form-group">
                   <label for="categoryInput">Category</label>
                   <select class="form-control" value="Powder" id="categoryInput" ng-model="input.category" ng-options='title for title in arrayOfCategories'>
-                    <option value=''>-- chose category --</option>
+                    <option value=''>Select Category</option>
                   </select>
                   <label for="descriptionInput">Description</label>
-                  <input type="description" class="form-control" id="descriptionInput" placeholder="Enter a description" ng-model="description.body">
+                  <input type="description" class="form-control" id="descriptionInput" placeholder="Enter a Description" ng-model="description.body">
               </div>
             </form>
           </div>
