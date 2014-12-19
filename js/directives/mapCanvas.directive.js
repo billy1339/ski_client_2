@@ -27,7 +27,6 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
       google.maps.event.addListener(marker, 'click', function(event) {
         $('#modalId'+category.id).click()
         scope.deleteMarker = marker;
-        console.log(marker)
       });
     };
 
