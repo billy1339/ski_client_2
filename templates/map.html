@@ -5,6 +5,13 @@
           <div class='col-md-8' id='map-padding'>
               <div map-canvas id="map-canvas" style="width: 100%; height: 600px"></div>
           </div>
+          <div id="legend">
+              My first legend!
+          </div>
+          <script>
+          map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
+          document.getElementById('legend'));
+          </script>
     <div ng-controller="MarkerCtrl">
           <div class='col-md-4' id='col-for-markers'>
             <button ng-click="makeMarker()"type="button" class="btn btn-primary">Create</button>
