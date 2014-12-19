@@ -11,6 +11,10 @@
   margin: 1em;
 }
 
+#col-for-markers {
+  margin-top: 1em;
+}
+
 h1 i {
   color: #428bca;
   font-weight: bold;
