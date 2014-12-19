@@ -1,0 +1,21 @@
+<div class="navbar navbar-default" role="navigation" id='navbar'>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id='headerTitle' class="navbar-brand" ng-href="#/">Mt.Mapper</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li id='headerName1' ng-class="{ active: isActive('/home')}"><a ng-href="#/">Home</a></li>
+                <li id='headerName2' ng-class="{ active: isActive('/map')}"><a ng-href="#/map">Killington</a></li>
+                <li id='headerName3' ng-class="{ active: isActive('/map')}"><a ng-href="#/map">Jackson Hole</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

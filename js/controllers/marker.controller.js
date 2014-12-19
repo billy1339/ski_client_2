@@ -7,7 +7,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
     'trail-closed': {title: 'Trail-Closed', url: 'http://i.imgur.com/rmRJKuY.png'},
     'trail-conditions': {title: 'Trail-Conditions', url:'http://i.imgur.com/UYs1CFk.png'},
     'powder': {title: 'Powder', url: 'http://i.imgur.com/hel1qm8.png'},
-    'lines': {title: 'Long-Lines', url: 'http://i.imgur.com/7gawLsF.png'},
+    'long-lines': {title: 'Long-Lines', url: 'http://i.imgur.com/7gawLsF.png'},
     'lodge': {title: 'Lodge', url: 'http://i.imgur.com/Xz8JpuJ.png'},
     'snow-park': {title: 'Snow-Park', url: 'http://i.imgur.com/A9AQssm.png'}
   };
@@ -81,19 +81,19 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
   };
 
   var clearBody = function() {
-    // need to clear the description form.
+    $scope.body = {}
   };
 
-  $scope.newDescription = function(description, id) {
+  $scope.newDescription = function(body, id) {
+    $scope.body = body;
     var params = {
-      description: {body: description, input_id: id.id}
+      description: {body: body, input_id: id.id}
     };
-    $('#list'+id.id).append('<li>'+description+'</li>');
+    $('#list'+id.id).append('<li>'+body+'</li>');
     $q.all($http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function(response) {
-    }).then(function() {
-      clearBody();
-      // clearForm();
-    }));
+      }).then(function() {
+        clearBody();
+      }));
   };
 
   var update = function() {

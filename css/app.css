@@ -1,3 +1,7 @@
+* {
+  font-family: 'Alef', sans-serif;
+}
+
 .hidable {
   display: none;
 }
@@ -7,14 +11,87 @@
   margin: 1em;
 }
 
+h1 i {
+  color: #428bca;
+  font-weight: bold;
+}
+
+#headerTitle {
+  font-size: 30px;
+  color: #428bca;
+  font-weight: bold;
+}
+
+#headerName3 {
+  font-size: 20px;
+}
+
+#headerName2 {
+  font-size: 20px;
+}
+
+#headerName1 {
+  font-size: 20px;
+}
+
 .flag:hover {
   color: red;
 }
 
-#flags {
-
+#mountainTitle {
+  margin-left: 1em;
+  align: center;
 }
 
 .turnRed {
   color: red;
+}
+
+body {
+    padding-top: 0.25em;
+}
+
+#header-pic {
+  margin-top: 1em;
+  width: 100%;
+  height: 600px;
+  background:
+  url(http://i.imgur.com/O2mzuSX.jpg) fixed no-repeat;
+  background-size: cover;
+  margin-bottom: 2em;
+}
+
+#tint {
+  margin-top: 1em;
+  padding: 0.5em;
+  background-color: rgba(20, 20, 20, 0.9);
+  color: white;
+  word-spacing: 2px;
+
+}
+
+#tint p {
+  font-size: 15px;
+}
+
+#footer {
+  /*border-top: 1px solid rgb(50, 50, 50)*/
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#footer1{
+  text-align: center;
+
+  /*margin-bottom: 3em;
+  align: center;
+  border-top: 1px solid rgb(50, 50, 50)*/
+}
+
+
+#footer2{
+  text-align: center;
+}
+#footer3{
+  text-align: center;
 }

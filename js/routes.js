@@ -8,6 +8,6 @@ angular.module('Ski').config(function($routeProvider) {
       templateUrl: 'templates/map.html',
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/home'
     });
 });
