@@ -30,12 +30,14 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
       google.maps.event.addListener(marker, 'click', function(event) {
         $('#modalId'+category.id).click()
         scope.deleteMarker = marker;
+        console.log(marker)
       });
     };
 
     //icon: category.images
     allMarker = function() {
       var myLatlng, marker, i, array, length;
+      debugger
       array = scope.mountain.inputs;
       length = array.length;
       for(i = 0; i < length; i++) {

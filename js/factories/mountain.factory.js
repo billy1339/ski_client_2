@@ -7,7 +7,7 @@ angular.module('Ski').factory('MountainFactory', function($http, $q) {
     deferred = $q.defer();
     $http.get('https://quiet-journey-8066.herokuapp.com/mountains/1')
       .success(function(response) {
-        mountain = {};
+        mountain = [];
         angular.copy(response, mountain);
         deferred.resolve(mountain);
     });
