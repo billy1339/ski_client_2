@@ -5,11 +5,6 @@ angular.module('Ski').controller('HeaderCtrl', function($scope, $http, MountainF
   };
 
   $scope.getGeoPosition = function() {
-    // if (geoPosition.init()) {
-    //    geoPosition.getCurrentPosition(geoSuccess, geoError);
-    // }
-
-
     if(geoPosition.init()){  // Geolocation Initialisation
             geoPosition.getCurrentPosition(success_callback,error_callback,{enableHighAccuracy:true});
     } else{

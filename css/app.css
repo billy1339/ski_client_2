@@ -41,6 +41,9 @@ h1 i {
 #headerName1 {
   font-size: 20px;
 }
+#geolocation {
+  font-sixe: 20px;
+}
 
 .flag:hover {
   color: red;
