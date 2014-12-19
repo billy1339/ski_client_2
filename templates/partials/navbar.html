@@ -9,11 +9,11 @@
             </button>
             <a id='headerTitle' class="navbar-brand" ng-href="#/">Mt.Mapper</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" ng-controller='HeaderCtrl'>
             <ul class="nav navbar-nav">
                 <li id='headerName1' ng-class="{ active: isActive('/home')}"><a ng-href="#/">Home</a></li>
-                <li id='headerName2' ng-class="{ active: isActive('/map')}"><a data-id=1 ng-href="#/map">Killington</a></li>
-                <li id='headerName3' ng-class="{ active: isActive('/map')}"><a data-id=2 ng-href="#/map">Jackson Hole</a></li>
+                <li id='headerName2' ng-class="{ active: isActive('/map/Killington')}"><a ng-click='setMtn(0)' ng-href="#/map/Killington">Killington</a></li>
+                <li id='headerName3' ng-class="{ active: isActive('/map/JacksonHole')}"><a ng-click='setMtn(1)' ng-href="#/map/JacksonHole">Jackson Hole</a></li>
             </ul>
         </div>
     </div>

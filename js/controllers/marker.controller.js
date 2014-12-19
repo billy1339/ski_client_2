@@ -1,4 +1,4 @@
-angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, MountainFactory, $window) {
+angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, MountainFactory, $rootScope) {
   'use strict';
 
   $scope.imageCategories = {
@@ -81,7 +81,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
   };
 
   var clearBody = function() {
-    $scope.body = {}
+
   };
 
   $scope.newDescription = function(body, id) {
@@ -92,7 +92,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
     $('#list'+id.id).append('<li>'+body+'</li>');
     $q.all($http.post('https://quiet-journey-8066.herokuapp.com/descriptions', params).success(function(response) {
       }).then(function() {
-        clearBody();
+        $scope.body = {}
       }));
   };
 
@@ -113,7 +113,13 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
         }
       }
     };
-    colorExistingFlags(mountain[0]);
+
+    if ($scope.$$prevSibling.mountain.id === 1) {
+      colorExistingFlags(mountain[0]);
+    } else {
+      colorExistingFlags(mountain[1]);
+    }
+
   });
 
   $scope.createFlag = function(input, flagNum) {
@@ -129,7 +135,6 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
     } else {
       $http.delete('https://quiet-journey-8066.herokuapp.com/inputs/'+input.id).success(function(response) {
         $scope.$$prevSibling.deleteMarker.setMap(null);
-        console.log(response)
       });
     };
   };

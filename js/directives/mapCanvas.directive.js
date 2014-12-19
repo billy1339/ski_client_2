@@ -7,7 +7,11 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
     promise.then(function(mountain){
 
-    scope.mountain = mountain[0];
+    if(scope.$root.mtnId === undefined) {
+      scope.mountain = mountain[0];
+    } else {
+      scope.mountain = mountain[scope.$root.mtnId];
+    }
     myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
 
     mapOptions = {
@@ -17,13 +21,6 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
 
     scope.map = new google.maps.Map(element[0], mapOptions);
 
-    // makeWindowForMarkers = function(category) {
-    //  var infowindow = new google.maps.InfoWindow({
-    //     content: category,
-    //     size: new google.maps.Size(100,100)
-    //   });
-    //   return infowindow;
-    // };
 
     addModalListner = function(marker, category) {
       scope.input = category;

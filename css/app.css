@@ -12,12 +12,16 @@
 }
 
 #col-for-markers {
-  margin-top: 1em;
+
 }
 
 h1 i {
   color: #428bca;
   font-weight: bold;
+}
+
+#map-padding {
+  margin-bottom: 2em;
 }
 
 #headerTitle {

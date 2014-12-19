@@ -4,7 +4,10 @@ angular.module('Ski').config(function($routeProvider) {
     .when('/home', {
       templateUrl: 'templates/home.html'
     })
-    .when('/map', {
+    .when('/map/Killington', {
+      templateUrl: 'templates/map.html',
+    })
+    .when('/map/JacksonHole', {
       templateUrl: 'templates/map.html',
     })
     .otherwise({
