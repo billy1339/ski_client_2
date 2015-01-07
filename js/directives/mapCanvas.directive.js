@@ -14,19 +14,36 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     }
     myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
 
+
+    var styles = [
+    {
+      featureType: 'all',
+      stylers: [
+        {saturation: -38},
+        {weight: 2},
+        {lightness: -16}
+      ]
+    }
+  ];
+
     mapOptions = {
       center: myLatlng,
-      zoom: 14
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
     };
 
-    scope.map = new google.maps.Map(element[0], mapOptions);
+    // var styledMap = new google.maps.StyledMapType(styles, {name: 'Mt.Mapper'});
 
+    scope.map = new google.maps.Map(element[0], mapOptions);
+    scope.map.setOptions({styles: styles});
+    // debugger
+    // scope.map.mapTypes.set('map_style', styledMap);
 
     addModalListner = function(marker, category) {
       scope.input = category;
       google.maps.event.addListener(marker, 'click', function(event) {
         $('#modalId'+category.id).click()
-        scope.deleteMarker = marker;
+        scope.deleteMarker = marker;  //32
       });
     };
 

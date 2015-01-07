@@ -136,7 +136,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
       $http.delete('https://quiet-journey-8066.herokuapp.com/inputs/'+input.id).success(function(response) {
         $scope.$$prevSibling.deleteMarker.setMap(null);
       });
-    };
+    }
   };
 
 });
@@ -144,6 +144,7 @@ angular.module('Ski').controller('MarkerCtrl', function($scope, $http, $q, Mount
 
 
 angular.module('Ski').directive('wsDescription', function() {
+    'use strict'
     return {
         restrict: 'E',
 
