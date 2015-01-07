@@ -19,9 +19,8 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     {
       featureType: 'all',
       stylers: [
-        {saturation: -38},
-        {weight: 2},
-        {lightness: -16}
+        {saturation: -5},
+        {lightness: -5}
       ]
     }
   ];
