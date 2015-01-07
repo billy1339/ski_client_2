@@ -15,15 +15,15 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     myLatlng = new google.maps.LatLng(scope.mountain.longitude, scope.mountain.latitude);
 
 
-    var styles = [
-    {
-      featureType: 'all',
-      stylers: [
-        {saturation: -5},
-        {lightness: -5}
-      ]
-    }
-  ];
+  //   var styles = [
+  //   {
+  //     featureType: 'all',
+  //     stylers: [
+  //       {saturation: -5},
+  //       {lightness: -5}
+  //     ]
+  //   }
+  // ];
 
     mapOptions = {
       center: myLatlng,
@@ -34,7 +34,7 @@ angular.module('Ski').directive('mapCanvas', function(MountainFactory) {
     // var styledMap = new google.maps.StyledMapType(styles, {name: 'Mt.Mapper'});
 
     scope.map = new google.maps.Map(element[0], mapOptions);
-    scope.map.setOptions({styles: styles});
+    // scope.map.setOptions({styles: styles});
     // debugger
     // scope.map.mapTypes.set('map_style', styledMap);
 
