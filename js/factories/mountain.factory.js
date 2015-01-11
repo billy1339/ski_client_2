@@ -1,5 +1,5 @@
 angular.module('Ski').factory('MountainFactory', function($http, $q) {
-  'use strict'
+  'use strict';
 
 
   var fetch = function(){
